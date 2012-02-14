@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  yesterday: MyText
+  today: MyText
+  roadblocks: MyText
+
+two:
+  yesterday: MyText
+  today: MyText
+  roadblocks: MyText
