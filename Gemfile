@@ -1,3 +1,7 @@
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
@@ -7,6 +11,7 @@ gem 'rails', '3.2.1'
 
 #gem 'sqlite3'
 gem 'pg'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
