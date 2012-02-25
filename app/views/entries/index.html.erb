@@ -1,7 +1,30 @@
 <h1>Listing entries</h1>
+<br />
+<ul class="thumbnails">
+<% @monday.upto(@friday).each do |weekday| 
+	data_day = @entries.where(:day=>weekday).first unless @entries.where(:day=>weekday).first.nil?
+	data_next = @entries.where(:day=>weekday+1.day).first unless @entries.where(:day=>weekday+1.day).first.nil?
+	%>
+		<li class="span2">
+	  	<div class="thumbnail">
+				<h3>
+					<%= weekday.strftime('%A') %> <%= weekday %>
+				</h3>
+				<span class="label label-success">
+					you worked on:
+				</span>
+				<p>
+					<%= data_next.yesterday unless data_next.nil? %>
+					(<%= data_day.today unless data_day.nil? %>)
+				</p>
+			</div>
+		</li>
+<% end %>
+</ul>
 
 <table>
   <tr>
+    <th>Entry for</th>
     <th>Yesterday</th>
     <th>Today</th>
     <th>Roadblocks</th>
@@ -12,6 +35,7 @@
 
 <% @entries.each do |entry| %>
   <tr>
+    <td><%= entry.day %></td>
     <td><%= entry.yesterday %></td>
     <td><%= entry.today %></td>
     <td><%= entry.roadblocks %></td>

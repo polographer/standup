@@ -12,6 +12,7 @@ gem 'rails', '3.2.1'
 #gem 'sqlite3'
 gem 'pg'
 gem 'devise'
+gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,4 +41,6 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+group :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end

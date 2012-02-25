@@ -1,7 +1,22 @@
 Standup::Application.routes.draw do
+  #get "welcome/index"
   devise_for :users
 
   resources :entries
+  
+  authenticated :user do
+    root :to => 'entries#index'
+  end
+  
+  root :to => 'welcome#index'
+  
+  # devise_for :user do
+  #   root :to => "entries#index"
+  # end
+  
+  
+  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+	<div class="field">
+    <%= f.label :day %><br />
+    <%= f.text_field :day, :id=>"day_selector"%>
+  </div>
 
   <div class="field">
     <%= f.label :yesterday %><br />
@@ -24,6 +28,6 @@
     <%= f.text_area :roadblocks %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn" %>
   </div>
 <% end %>

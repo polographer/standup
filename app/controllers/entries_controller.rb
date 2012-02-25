@@ -2,7 +2,10 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all
+    @monday=Date.today.beginning_of_week
+    @friday = @monday.end_of_week - 2
+    
+    @entries = Entry.get_week_for(@monday)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +83,5 @@ class EntriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end
