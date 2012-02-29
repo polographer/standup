@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
   def index
     @monday=Date.today.beginning_of_week
     @friday = @monday.end_of_week - 2
+    #@weeklist
     
     @entries = Entry.get_week_for(@monday)
 
