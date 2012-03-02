@@ -3,9 +3,8 @@ class EntriesController < ApplicationController
   # GET /entries.json
   def index
     @monday=Date.today.beginning_of_week
-    @friday = @monday.end_of_week - 2
-    #@weeklist
-    
+    @friday = @monday.end_of_week - 2    
+    @past_mondays = (@monday-1.month).upto(@monday).collect {|day| day if day.monday? }
     @entries = Entry.get_week_for(@monday)
 
     respond_to do |format|
@@ -45,10 +44,12 @@ class EntriesController < ApplicationController
   # POST /entries.json
   def create
     @entry = Entry.new(params[:entry])
+    @entry.user = current_user
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        #format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to entries_url, notice: 'Entry was successfully created.' }
         format.json { render json: @entry, status: :created, location: @entry }
       else
         format.html { render action: "new" }
@@ -64,7 +65,8 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        #format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to entries_url, notice: 'Entry was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

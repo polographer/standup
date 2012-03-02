@@ -1,5 +1,6 @@
 class Entry < ActiveRecord::Base
   validates :day, :uniqueness => true
+  belongs_to :user
   
   def self.get_week_for(day)
     if not day.monday?

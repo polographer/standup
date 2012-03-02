@@ -13,6 +13,7 @@ gem 'rails', '3.2.1'
 gem 'pg'
 gem 'devise'
 gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.

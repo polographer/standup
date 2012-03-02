@@ -1,5 +1,8 @@
 <h1>Week view</h1>
-
+ <%= select("week", nil , @past_mondays ) %>
+<% @past_mondays.each do |monday|%>
+	<%= monday %>
+<% end %>
 <br />
 <ul class="thumbnails">
 <% @monday.upto(@friday).each do |weekday| 
@@ -20,42 +23,21 @@
 						<%= data_next.yesterday %>
 					</p>
 				<% end %>
-				<% unless data_day.nil? %>
+				<% if data_day.nil? %>
+					<%= link_to 'Add entry for this day', new_entry_path , :class=>'btn'%>
+				<% else %>
 					<span class="label label-warning">
 						expected
 					</span>
 					<p><%= data_day.today %></p>
+					<%= link_to 'Edit entry', edit_entry_path(data_day) , :class=>'btn'%>
+					
 				<% end %>
 			</div>
 		</li>
 <% end %>
 </ul>
-<h1>List view</h1>
-
-<table>
-  <tr>
-    <th>Entry for</th>
-    <th>Yesterday</th>
-    <th>Today</th>
-    <th>Roadblocks</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @entries.each do |entry| %>
-  <tr>
-    <td><%= entry.day %></td>
-    <td><%= entry.yesterday %></td>
-    <td><%= entry.today %></td>
-    <td><%= entry.roadblocks %></td>
-    <td><%= link_to 'Show', entry %></td>
-    <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-    <td><%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
 
 <br />
 
-<%= link_to 'New Entry', new_entry_path %>
+<%= link_to 'New Entry', new_entry_path, :class=>'btn' %>
