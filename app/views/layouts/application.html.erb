@@ -7,40 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-	<div class="navbar navbar-fixed-top">
-	  <div class="navbar-inner">
-	    <div class="container">
-	      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </a>
-	      <a class="brand" href="#">Standup!</a>
-	      <div class="nav-collapse">
-	        <ul class="nav">
-
-	          <li class="active"><%= link_to "Home", root_path%></li>
-	          <li><a href="#about">About</a></li>
-	          <li><a href="#contact">Contact</a></li>
-	        </ul>
-					<p class="navbar-text pull-right">
-						<% if user_signed_in? %>
-	          	<%= current_user.email %>
-							<%= link_to "logout", destroy_user_session_path, :method=> :delete%>
-						<% else %>
-	          	<%= link_to "Register", new_user_registration_path %>
-							<%= link_to "Login", new_user_session_path %>
-						<% end %>
-					</p>
-	      </div><!--/.nav-collapse -->
-	    </div>
-	  </div>
-	</div>
+	<%= render "partials/navbar" %>
 
 	<div class="container">
 			<%= yield %>
 		<footer>
+
 	    <p>&copy; Waza Inc. 2012</p>
 	  </footer>
 
