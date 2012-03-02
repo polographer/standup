@@ -19,17 +19,15 @@
 	      <a class="brand" href="#">Standup!</a>
 	      <div class="nav-collapse">
 	        <ul class="nav">
-
-	          <li class="active"><%= link_to "Home", root_path%></li>
-	          <li><a href="#about">About</a></li>
-	          <li><a href="#contact">Contact</a></li>
+			  <%= raw bootstrap_menu_entry("Home", root_path) %>
+			  <%= raw bootstrap_menu_entry("About", about_path) %>
 	        </ul>
 					<p class="navbar-text pull-right">
 						<% if user_signed_in? %>
-	          	<%= current_user.email %>
+				          	<%= current_user.email %>
 							<%= link_to "logout", destroy_user_session_path, :method=> :delete%>
 						<% else %>
-	          	<%= link_to "Register", new_user_registration_path %>
+	        			  	<%= link_to "Register", new_user_registration_path %>
 							<%= link_to "Login", new_user_session_path %>
 						<% end %>
 					</p>
@@ -41,6 +39,8 @@
 	<div class="container">
 			<%= yield %>
 		<footer>
+		<%= request.path %>
+
 	    <p>&copy; Waza Inc. 2012</p>
 	  </footer>
 

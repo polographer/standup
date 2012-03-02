@@ -3,10 +3,12 @@ Standup::Application.routes.draw do
   devise_for :users
 
   resources :entries
-  
+    
   authenticated :user do
     root :to => 'entries#index'
   end
+  
+  match 'about' => 'welcome#about'
   
   root :to => 'welcome#index'
   
