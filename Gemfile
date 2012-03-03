@@ -9,7 +9,6 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3', '~> 1.3.5'
 gem 'pg'
 gem 'devise'
 gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
@@ -44,4 +43,6 @@ gem 'jquery-rails'
 # To use debugger
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'sqlite3', '~> 1.3.5'
+  
 end
