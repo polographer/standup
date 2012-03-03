@@ -1,5 +1,9 @@
 <h1>Week view</h1>
- Switch to week: <%= select("week", nil , @past_mondays ) %>
+<p>
+<form id="filter_week">	
+ Switch to week: <input type="text" id="week_selector" name="week_selector" value="<%=@monday%>" />
+</form>
+</p>
 <br />
 <ul class="thumbnails">
 <% @monday.upto(@friday).each do |weekday| 
@@ -21,7 +25,7 @@
 					</p>
 				<% end %>
 				<% if data_day.nil? %>
-					<%= link_to 'Add entry for this day', new_entry_path , :class=>'btn'%>
+					<%= link_to 'Add entry for this day', new_entry_path + "?day=" +weekday.to_s , :class=>'btn'%>
 				<% else %>
 					<span class="label label-warning">
 						expected

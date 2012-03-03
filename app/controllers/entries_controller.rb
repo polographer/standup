@@ -2,9 +2,11 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @monday=Date.today.beginning_of_week
+    puts params
+    @day = Date.parse(params[:week_selector]) rescue nil
+    @day = Date.today if @day.nil?
+    @monday= @day.beginning_of_week
     @friday = @monday.end_of_week - 2    
-    @past_mondays = (@monday-1.month).upto(@monday).collect {|day| day if day.monday? }.compact
     @entries = Entry.get_week_for(@monday)
 
     respond_to do |format|
@@ -28,7 +30,8 @@ class EntriesController < ApplicationController
   # GET /entries/new.json
   def new
     @entry = Entry.new
-
+    @entry.day = Date.parse(params[:day]) unless params[:day].nil?
+    @yesterday_data = Entry.find_by_day(@entry.day-1.day) unless params[:day].nil?
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @entry }

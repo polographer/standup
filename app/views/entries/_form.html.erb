@@ -10,24 +10,50 @@
       </ul>
     </div>
   <% end %>
-	<div class="field">
-    <%= f.label :day %><br />
-    <%= f.text_field :day, :id=>"day_selector"%>
-  </div>
 
-  <div class="field">
-    <%= f.label :yesterday %><br />
-    <%= f.text_area :yesterday %>
-  </div>
-  <div class="field">
-    <%= f.label :today %><br />
-    <%= f.text_area :today %>
-  </div>
-  <div class="field">
-    <%= f.label :roadblocks %><br />
-    <%= f.text_area :roadblocks %>
-  </div>
-  <div class="actions">
-    <%= f.submit :class=>"btn" %>
-  </div>
+	<hr />
+
+	<div class="row">
+		<div class="span3">
+	    <%= f.label :yesterday %><br />
+	    <%= f.text_area :yesterday %>
+	  </div>
+	  <div class="span3">
+	    <%= f.label :today %><br />
+	    <%= f.text_area :today %>
+	  </div>	  
+	
+	  <div class="span3">
+	    <%= f.label :roadblocks %><br />
+	    <%= f.text_area :roadblocks %>
+	  </div>
+	
+		<div class="span3">
+	    <%= f.label :day %><br />
+	    <%= f.text_field :day, :id=>"day_selector"%>
+		  <div class="actions">
+			    <%= f.submit :class=>"btn" %>
+					<%= link_to 'Back', entries_path, :class=>'btn' %>
+			</div>
+			<br/>
+			<% unless @yesterday_data.nil? %>
+				<div>
+					<p>
+					Yesterday (<%= @yesterday_data.day %>) you said you 
+					will be doing: 
+					</p>
+					<p>	<%= @yesterday_data.today %>  </p>
+				</div>
+			<% end %>
+	
+	  </div>	
+		
+	</div>
+	
+	
+	
+
+
+
+
 <% end %>
