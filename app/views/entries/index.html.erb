@@ -1,8 +1,5 @@
 <h1>Week view</h1>
- <%= select("week", nil , @past_mondays ) %>
-<% @past_mondays.each do |monday|%>
-	<%= monday %>
-<% end %>
+ Switch to week: <%= select("week", nil , @past_mondays ) %>
 <br />
 <ul class="thumbnails">
 <% @monday.upto(@friday).each do |weekday| 

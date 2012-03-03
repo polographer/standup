@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
   def index
     @monday=Date.today.beginning_of_week
     @friday = @monday.end_of_week - 2    
-    @past_mondays = (@monday-1.month).upto(@monday).collect {|day| day if day.monday? }
+    @past_mondays = (@monday-1.month).upto(@monday).collect {|day| day if day.monday? }.compact
     @entries = Entry.get_week_for(@monday)
 
     respond_to do |format|
