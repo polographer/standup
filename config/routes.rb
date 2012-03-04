@@ -2,8 +2,12 @@ Standup::Application.routes.draw do
   #get "welcome/index"
   devise_for :users
 
-  resources :entries
-    
+  resources :entries do
+    collection do
+      get 'export'
+    end
+  end
+  
   authenticated :user do
     root :to => 'entries#index'
   end

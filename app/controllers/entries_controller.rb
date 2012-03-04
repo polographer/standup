@@ -1,3 +1,4 @@
+require 'csv'
 class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
@@ -76,6 +77,19 @@ class EntriesController < ApplicationController
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def export
+    csv_string = CSV.generate do |csv|\
+      csv << ["day", "yesterday", "today", "roadblocks"]
+      current_user.entries.all.each do |entry|
+        csv << [entry.day, entry.yesterday, entry.today, entry.roadblocks]
+      end
+    end
+    send_data csv_string,
+              :filename => "data_"+Date.today.to_s+".csv",
+              :type => "application/csv"
+    
   end
 
   # DELETE /entries/1
