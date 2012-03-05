@@ -2,7 +2,7 @@
 
 minimo ya tenemos pagina en heroku... la direccion es esta:
 
-http://freezing-wind-6219.herokuapp.com/
+http://standup-app.herokuapp.com/
 
 ahi luego compramos un dominio
 
