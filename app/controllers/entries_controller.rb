@@ -92,6 +92,17 @@ class EntriesController < ApplicationController
     
   end
 
+  def today
+    now = Date.today
+    respond_to do |format|
+      if entry=Entry.find_by_day(now)
+        format.html{ redirect_to edit_entry_path(entry)}
+      else
+        format.html{ redirect_to new_entry_path(:day=>now)}
+      end
+    end
+  end
+
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy

@@ -5,6 +5,7 @@ Standup::Application.routes.draw do
   resources :entries do
     collection do
       get 'export'
+      get 'today'
     end
   end
   

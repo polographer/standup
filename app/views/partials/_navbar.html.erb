@@ -10,6 +10,7 @@
 		  <div class="nav-collapse">
 			<ul class="nav">
 			  <%= raw bootstrap_menu_entry("Home", root_path) %>
+			  <%= raw bootstrap_menu_entry("Today", today_entries_path) %>
 				<% if user_signed_in? %>
 			  	<%= raw bootstrap_menu_entry("Profile", edit_user_registration_path) %>
 			  <% end %>
