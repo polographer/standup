@@ -10,14 +10,15 @@
 		  <div class="nav-collapse">
 			<ul class="nav">
 			  <%= raw bootstrap_menu_entry("Home", root_path) %>
+				<% if user_signed_in? %>
+			  	<%= raw bootstrap_menu_entry("Profile", edit_user_registration_path) %>
+			  <% end %>
 			  <%= raw bootstrap_menu_entry("About", about_path) %>
 			</ul>
 					<p class="navbar-text pull-right">
 						<% if user_signed_in? %>
-							<%= link_to current_user.email, edit_user_registration_path %> / 
 							<%= link_to "logout", destroy_user_session_path, :method=> :delete%>
 						<% else %>
-							<%= link_to "Register", new_user_registration_path %> / 
 							<%= link_to "Login", new_user_session_path %>
 						<% end %>
 					</p>
