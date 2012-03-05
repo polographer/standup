@@ -2,7 +2,7 @@
 
 minimo ya tenemos pagina en heroku... la direccion es esta:
 
-http://high-planet-5042.herokuapp.com/
+http://freezing-wind-6219.herokuapp.com/
 
 ahi luego compramos un dominio
 
