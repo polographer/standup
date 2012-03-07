@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
     @day = Date.today if @day.nil?
     @monday= @day.beginning_of_week
     @friday = @monday.end_of_week - 2    
-    @entries = Entry.get_week_for(@monday)
+    @entries = current_user.entries.get_week_for(@monday)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
-    @entry = Entry.find(params[:id])
+    @entry = current_user.entries.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,7 +32,7 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
     @entry.day = Date.parse(params[:day]) unless params[:day].nil?
-    @yesterday_data = Entry.find_by_day(@entry.day-1.day) unless params[:day].nil?
+    @yesterday_data = current_user.entries.find_by_day(@entry.day-1.day) unless params[:day].nil?
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @entry }
@@ -41,7 +41,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
-    @entry = Entry.find(params[:id])
+    @entry = current_user.entries.find(params[:id])
   end
 
   # POST /entries
@@ -65,7 +65,7 @@ class EntriesController < ApplicationController
   # PUT /entries/1
   # PUT /entries/1.json
   def update
-    @entry = Entry.find(params[:id])
+    @entry = current_user.entries.find(params[:id])
 
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
@@ -95,7 +95,7 @@ class EntriesController < ApplicationController
   def today
     now = Date.today
     respond_to do |format|
-      if entry=Entry.find_by_day(now)
+      if entry=current_user.entries.find_by_day(now)
         format.html{ redirect_to edit_entry_path(entry)}
       else
         format.html{ redirect_to new_entry_path(:day=>now)}
@@ -106,7 +106,7 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
-    @entry = Entry.find(params[:id])
+    @entry = current_user.entries.find(params[:id])
     @entry.destroy
 
     respond_to do |format|

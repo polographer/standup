@@ -12,7 +12,11 @@ gem 'rails', '3.2.1'
 gem 'pg'
 gem 'devise'
 gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
-gem 'thin'
+
+#better server
+gem "thin", "1.3.1"
+#need for winsucks
+gem "eventmachine", "1.0.0.beta.3"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,5 +48,4 @@ gem 'jquery-rails'
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'sqlite3', '~> 1.3.5'
-  
 end
