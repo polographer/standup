@@ -9,6 +9,8 @@ class EntriesController < ApplicationController
     @monday= @day.beginning_of_week
     @friday = @monday.end_of_week - 2    
     @entries = current_user.entries.get_week_for(@monday)
+    @next_week = @day.next_week
+    @previous_week = (@monday - 3).beginning_of_week
 
     respond_to do |format|
       format.html # index.html.erb

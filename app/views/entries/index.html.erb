@@ -1,7 +1,7 @@
 <h1>Week view</h1>
 <p>
 <form id="filter_week">	
- Switch to week: <input type="text" id="week_selector" name="week_selector" value="<%=@monday%>" />
+  Switch to week: <input type="text" id="week_selector" name="week_selector" value="<%=@monday%>" />  <%= link_to "[previous week]", "entries?week_selector=#{@previous_week}" %> <%= link_to "[next week]", "entries?week_selector=#{@next_week}" %>
 </form>
 </p>
 <br />
@@ -16,21 +16,26 @@
 					<%= weekday.strftime('%A') %> 
 				</h3>
 				<h5> <%= weekday %> </h5>
-				<% unless data_next.nil? %>
-					<span class="label label-success">
-						reality
-					</span>
-					<p>
-						<%= data_next.yesterday %>
-					</p>
-				<% end %>
 				<% if data_day.nil? %>
 					<%= link_to 'Add entry for this day', new_entry_path + "?day=" +weekday.to_s , :class=>'btn'%>
-				<% else %>
-					<span class="label label-warning">
-						expected
-					</span>
-					<p><%= data_day.today %></p>
+        <% else %>
+					<div class="label">
+						done yesterday
+          </div>
+          <p><%= simple_format data_day.yesterday %>
+          <br />
+					<div class="label label-warning">
+            <%= Date.today == weekday ? "todo" : "expected" %>
+          </div>
+					<p><%= simple_format data_day.today %></p>
+				  <% unless data_next.nil? %>
+					<div class="label label-success">
+						done
+          </div>
+					<p>
+						<%= simple_format data_next.yesterday %>
+					</p>
+				<% end %>
 					<%= link_to 'Edit entry', edit_entry_path(data_day) , :class=>'btn'%>
 					
 				<% end %>
