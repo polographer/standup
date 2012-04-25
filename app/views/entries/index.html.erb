@@ -35,10 +35,21 @@
 					<p>
 						<%= simple_format data_next.yesterday %>
 					</p>
+
+          <% if data_next.roadblocks.present? %>
+            <div class="label label-warning">
+              roadblocks
+            </div>
+            <p>
+              <%= simple_format data_next.roadblocks %>
+            </p>
+				  <% end %>
 				<% end %>
 					<%= link_to 'Edit entry', edit_entry_path(data_day) , :class=>'btn'%>
 					
-				<% end %>
+        <% end %>
+
+
 			</div>
 		</li>
 <% end %>
