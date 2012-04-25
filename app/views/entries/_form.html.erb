@@ -42,7 +42,7 @@
 					Yesterday (<%= @yesterday_data.day %>) you said you 
 					would get done: 
 					</p>
-					<p>	<%= @yesterday_data.today %>  </p>
+					<p>	<%= simple_format @yesterday_data.today %>  </p>
 				</div>
 			<% end %>
 	
