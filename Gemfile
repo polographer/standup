@@ -34,4 +34,6 @@ group :test do
   gem 'guard-spork'
   gem 'fuubar'
   gem 'growl'
+  gem 'factory_girl_rails'
+  gem 'shoulda', '~> 3.0.1'
 end
