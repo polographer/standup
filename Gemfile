@@ -31,4 +31,7 @@ end
 group :test do
   gem 'rb-fsevent'
   gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'fuubar'
+  gem 'growl'
 end
