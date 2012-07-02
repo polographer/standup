@@ -7,6 +7,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 
 gem 'sqlite3', '~> 1.3.5'
+gem 'activerecord-postgresql-adapter'
+
 gem 'devise'
 gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
 
@@ -25,7 +27,7 @@ gem 'jquery-rails'
 gem 'rspec-rails', :group => [:development, :test]
 
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do
