@@ -19,12 +19,11 @@ test:
 #   database: puraoferta_staging
 #   pool: 5
 #   username: warstories
-#   #password: sure_pass_db$
+#   #password: 
 
 production:
   adapter: postgresql
   encoding: unicode
   database: standup_production
   pool: 5
-#  username: prescriptionrex
-#  password: pg#7~SS
+
