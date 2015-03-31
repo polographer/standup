@@ -1,8 +1,6 @@
 == standup!
 
-minimo ya tenemos pagina en heroku... la direccion es esta:
+old app for gather standup status and show them on a weelkly view later.
 
-http://standup-app.herokuapp.com/
 
-ahi luego compramos un dominio
-
+It was created to present this to the client on later meetings to see what moved on the week
